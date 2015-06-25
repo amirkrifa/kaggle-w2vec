@@ -37,6 +37,7 @@ def labelizeReviews(reviews, label_type):
 
 #Get training set vectors from our models
 def getVecs(model, corpus, size):
+    import numpy as np
     vecs = [np.array(model[z.labels[0]]).reshape((1, size)) for z in corpus]
     return np.concatenate(vecs)
 
