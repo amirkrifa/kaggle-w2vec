@@ -84,7 +84,7 @@ def main():
 
     import random
     
-    size = 300
+    size = 400
     
     #instantiate our DM and DBOW models
     logging.info('instantiate our DM and DBOW models')
@@ -99,7 +99,7 @@ def main():
     #We pass through the data set multiple times, shuffling the training reviews each time to improve accuracy.
     logging.info('Training ...')
     all_train_reviews = np.concatenate((x_train, x_unsup_reviews))
-    for epoch in range(5):
+    for epoch in range(10):
         perm = np.random.permutation(all_train_reviews.shape[0])
         model_dm.train(all_train_reviews[perm])
         model_dbow.train(all_train_reviews[perm])
@@ -113,7 +113,7 @@ def main():
     #train over test set
     x_test = np.array(x_test)
     
-    for epoch in range(5):
+    for epoch in range(10):
         perm = np.random.permutation(x_test.shape[0])
         model_dm.train(x_test[perm])
         model_dbow.train(x_test[perm])
